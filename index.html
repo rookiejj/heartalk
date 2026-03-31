@@ -494,10 +494,30 @@
         <div id="home" class="screen">
             <div class="home-top">
                 <div class="home-mark">두근카드</div>
-                <div class="home-h">서로에 대해<br><span>아직 모르는 게 있어요.</span></div>
-                <div class="home-p">카드를 뽑고 대화를 나눠요.<br>말이 많아질수록 마음도 깊어져요.</div>
+                <div class="home-h">카드 한 장으로<br><span>대화가 시작돼요.</span></div>
+                <div class="home-p">커플도, 친구도. 카드를 뽑고 대화를 나눠요.</div>
             </div>
             <div class="home-body">
+                <div>
+                    <div class="sec-label">친구 카드</div>
+                    <div class="deck-list">
+                        <div class="deck-row" onclick="startGame('icebreaker')">
+                            <div class="deck-row-name">아이스브레이커</div>
+                            <div class="deck-row-sub">어색함을 깨는 질문 · 30장</div>
+                            <div class="deck-row-arr">›</div>
+                        </div>
+                        <div class="deck-row" onclick="startGame('balance')">
+                            <div class="deck-row-name">밸런스 게임</div>
+                            <div class="deck-row-sub">양자택일 · 30장</div>
+                            <div class="deck-row-arr">›</div>
+                        </div>
+                        <div class="deck-row" onclick="startGame('tmi')">
+                            <div class="deck-row-name">TMI</div>
+                            <div class="deck-row-sub">서로 몰랐던 사실 털어놓기 · 30장</div>
+                            <div class="deck-row-arr">›</div>
+                        </div>
+                    </div>
+                </div>
                 <div>
                     <div class="sec-label">대화 카드</div>
                     <div class="deck-list">
@@ -782,12 +802,114 @@
                 { t: '미션', q: '서로 마주 보고 앉아 아무 말 없이 서로의 눈 2분 바라보기' }
             ];
 
-            const NAMES = { 탐구: '탐구', 사랑: '사랑', 미래: '미래', adult: '커플 심화 카드' };
+            const FRIEND = {
+                icebreaker: [
+                    '만약 평생 한 가지 음식만 먹어야 한다면 뭘 선택할 것 같아?',
+                    '지금 이 자리에서 제일 웃긴 사람을 꼽는다면?',
+                    '살면서 가장 창피했던 순간 딱 하나만 말해봐',
+                    '지금까지 받은 선물 중 가장 황당했던 건?',
+                    '나를 동물로 표현하면 뭐가 어울릴 것 같아?',
+                    '어릴 때 장래희망이 뭐였어?',
+                    '지금 당장 해외로 떠날 수 있다면 어디로 가고 싶어?',
+                    '인생에서 가장 용감하게 했던 행동은?',
+                    '지금 이 자리 사람들한테 비밀로 하고 있는 게 있어?',
+                    '나를 표현하는 단어 딱 세 개만 말해봐',
+                    '가장 최근에 진심으로 웃었던 게 언제야?',
+                    '내가 가진 특이한 재능이나 습관이 있다면?',
+                    '10년 후의 나는 뭘 하고 있을 것 같아?',
+                    '살면서 가장 후회되는 거 딱 하나만',
+                    '지금 당장 한 가지 능력을 가질 수 있다면?',
+                    '나한테 처음 생긴 돈으로 뭐 샀어?',
+                    '지금 이 자리에서 나랑 제일 다른 사람은 누구인 것 같아?',
+                    '나를 채용한다면 어떤 직책에 뽑겠어?',
+                    '오늘 아침에 일어나서 처음 한 생각은?',
+                    '내가 절대 안 먹는 음식이 있어?',
+                    '살면서 가장 운 좋았던 순간은?',
+                    '지금 당장 배우고 싶은 것 한 가지가 있다면?',
+                    '나에 대한 소문 중 사실인 것 한 가지만 말해봐',
+                    '어떤 계절에 태어났고, 그게 나랑 잘 맞는다고 생각해?',
+                    '지금 이 자리 사람 중 가장 먼저 결혼할 것 같은 사람은?',
+                    '내가 스트레스 받을 때 주로 하는 행동은?',
+                    '가장 최근에 도전한 새로운 것이 뭐야?',
+                    '지금 당장 전화할 수 있는 친구가 몇 명이나 될 것 같아?',
+                    '살면서 가장 뿌듯했던 순간 하나만 공유해봐',
+                    '이 자리에서 가장 먼저 일어날 것 같은 사람은?'
+                ],
+                balance: [
+                    '평생 여름 vs 평생 겨울',
+                    '기억을 잃는 것 vs 감정을 잃는 것',
+                    '돈 많은 백수 vs 바쁜 직장인',
+                    '거짓말을 못 하는 삶 vs 모든 걸 다 아는 삶',
+                    '10년 전으로 돌아가기 vs 10년 후로 가보기',
+                    '하늘을 날 수 있는 능력 vs 물속에서 숨쉬는 능력',
+                    '치킨 vs 피자 (평생 하나만)',
+                    '모두에게 사랑받지만 외로운 삶 vs 한 명에게 진심으로 사랑받는 삶',
+                    '유명인이 되기 vs 엄청난 부자가 되기',
+                    '남들이 내 생각을 읽을 수 있음 vs 내가 남의 생각을 읽을 수 있음',
+                    '평생 혼자 살기 vs 평생 사람이 붐비는 집에서 살기',
+                    '잠을 안 자도 되는 능력 vs 밥을 안 먹어도 되는 능력',
+                    '스마트폰 없는 삶 vs TV 없는 삶',
+                    '말을 엄청 잘 하는 것 vs 글을 엄청 잘 쓰는 것',
+                    '좋아하지 않는 일로 성공하기 vs 좋아하는 일로 평범하게 살기',
+                    '부모님이 내 카톡을 볼 수 있음 vs 친구들이 내 일기를 볼 수 있음',
+                    '과거의 나에게 편지 쓰기 vs 미래의 나에게 편지 쓰기',
+                    '모든 언어를 할 수 있음 vs 모든 악기를 연주할 수 있음',
+                    '공짜 비행기 평생권 vs 공짜 숙소 평생권',
+                    '항상 솔직한 친구 vs 항상 내 편인 친구',
+                    '기억력이 엄청 좋아짐 vs 집중력이 엄청 좋아짐',
+                    '매일 파티 vs 매일 혼자',
+                    '연예인과 하루 vs 내가 연예인이 되는 하루',
+                    '첫 만남에 모든 걸 말하는 성격 vs 절대 속을 안 보이는 성격',
+                    '지금 나이로 영원히 사는 것 vs 수명은 정해졌지만 원하는 나이로 죽는 것',
+                    '무조건 1등 vs 무조건 꼴등 (2등~꼴찌 전은 없음)',
+                    '나쁜 기억만 잊는 능력 vs 좋은 기억만 더 선명하게 만드는 능력',
+                    '다음 생에 천재로 태어나기 vs 지금 이대로 행복하게 살기',
+                    '평생 존댓말만 쓰기 vs 평생 반말만 쓰기',
+                    '남들이 내 나이를 모름 vs 내가 남들의 나이를 항상 알 수 있음'
+                ],
+                tmi: [
+                    '아무도 모르는 나만의 이상한 습관이 있어?',
+                    '나 사실 ○○ 을 엄청 무서워해 (빈칸 채우기)',
+                    '지금까지 살면서 제일 이상한 꿈 뭐야?',
+                    '밥 먹을 때 꼭 지키는 이상한 순서나 규칙 있어?',
+                    '혼자 있을 때만 하는 행동 하나만 고백해봐',
+                    '지금까지 해본 아르바이트 중 가장 기억에 남는 건?',
+                    '실제로 해본 것 중 제일 위험했던 짓은?',
+                    '나한테 의외인 취미나 관심사가 있다면?',
+                    '지금까지 가장 많이 본 영화나 드라마는?',
+                    '친구들한테 말 못 한 나의 흑역사 하나만',
+                    '가장 오래 연락 안 한 친구가 있어? 왜 그렇게 됐어?',
+                    '내가 어릴 때 엄청 좋아했던 것 중 지금 생각하면 부끄러운 게 있어?',
+                    '살면서 가장 큰돈을 어디에 써봤어?',
+                    '지금 핸드폰에서 가장 많이 본 앱 뭐야?',
+                    '나는 잠들기 전에 주로 무슨 생각 해?',
+                    '지금까지 받아본 가장 이상한 연락은?',
+                    '나도 모르게 자꾸 하는 말버릇이 있어?',
+                    '지금 이 자리 사람들한테 처음 인상이 어땠어?',
+                    '내가 화날 때 주로 어떻게 돼?',
+                    '사람들이 나에 대해 오해하고 있는 것 한 가지가 있다면?',
+                    '어릴 때 제일 좋아하던 과목과 제일 싫어하던 과목은?',
+                    '내가 절대 포기 못 하는 것 세 가지만 꼽으면?',
+                    '지금까지 해본 가장 즉흥적인 행동은?',
+                    '나는 보통 몇 시에 자고 몇 시에 일어나?',
+                    '가장 최근에 운 게 언제야? 이유가 뭐야?',
+                    '지금 내 핸드폰 잠금화면 배경은 뭐야? 왜 그걸 설정했어?',
+                    '내가 가장 자신 있는 것 한 가지만 말해봐',
+                    '나 사실 ○○ 에 은근히 진심이야 (빈칸 채우기)',
+                    '어릴 때 부모님한테 혼난 이유 중 제일 기억에 남는 건?',
+                    '지금 이 자리에서 가장 편한 사람과 가장 낯선 사람 솔직하게 말해봐'
+                ]
+            };
+
+            const NAMES = { 탐구: '탐구', 사랑: '사랑', 미래: '미래', adult: '커플 심화 카드', icebreaker: '아이스브레이커', balance: '밸런스 게임', tmi: 'TMI' };
             const MSGS = {
                 탐구: '서로에 대해 조금 더 깊이 이해하게 됐나요?\n대화를 나눈 만큼 마음이 가까워졌을 거예요.',
                 사랑: '오늘 나눈 이야기들이\n사랑을 더욱 깊게 만들었을 거예요.',
                 미래: '함께할 미래를 그려봤군요.\n오늘 이야기한 것들이 하나씩 이뤄지길 바라요.',
-                adult: '솔직하게 마음을 열어준 오늘 밤을\n오래 기억하게 될 거예요.'
+                adult: '솔직하게 마음을 열어준 오늘 밤을\n오래 기억하게 될 거예요.',
+                icebreaker: '어색함이 좀 풀렸나요?\n오늘 이후로 훨씬 편해질 것 같은 예감이 들어요.',
+                balance: '서로 선택이 얼마나 달랐나요?\n다름을 알아가는 것도 친해지는 방법이에요.',
+                tmi: '오늘 처음 알게 된 것들이 많았나요?\n이런 게 쌓이면서 진짜 친구가 되는 것 같아요.'
             };
 
             let key = '', deck = [], idx = 0, open = false, busy = false;
@@ -797,7 +919,10 @@
 
             function startGame(k) {
                 key = k;
-                deck = k === 'adult' ? [...ADULT].sort(() => Math.random() - .5) : [...DECKS[k]].sort(() => Math.random() - .5);
+                const friendKeys = ['icebreaker', 'balance', 'tmi'];
+                if (k === 'adult') deck = [...ADULT].sort(() => Math.random() - .5);
+                else if (friendKeys.includes(k)) deck = [...FRIEND[k]].sort(() => Math.random() - .5);
+                else deck = [...DECKS[k]].sort(() => Math.random() - .5);
                 idx = 0; open = false; busy = false;
                 document.getElementById('gName').textContent = NAMES[k];
                 document.getElementById('cardInner').classList.remove('flipped');
@@ -807,8 +932,9 @@
 
             function load() {
                 const total = deck.length, c = deck[idx], isA = key === 'adult';
+                const typeMap = { 탐구: '탐구', 사랑: '사랑', 미래: '미래', icebreaker: '아이스브레이커', balance: '밸런스', tmi: 'TMI' };
                 document.getElementById('cQ').textContent = isA ? c.q : c;
-                document.getElementById('cType').textContent = isA ? c.t : ({ 탐구: '탐구', 사랑: '사랑', 미래: '미래' }[key]);
+                document.getElementById('cType').textContent = isA ? c.t : typeMap[key];
                 document.getElementById('cNum').textContent = (idx + 1) + ' / ' + total;
                 document.getElementById('gCounter').textContent = (idx + 1) + ' / ' + total;
                 document.getElementById('gFill').style.width = Math.round(((idx + 1) / total) * 100) + '%';
