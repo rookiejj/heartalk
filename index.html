@@ -277,9 +277,8 @@
         }
 
         .card-scene {
-            width: 50vw;
-            height: calc(50vw * 1.45);
-            max-height: 85%;
+            width: min(50vw, calc(70vh / 1.4));
+            height: calc(min(50vw, calc(70vh / 1.4)) * 1.4);
             perspective: 1200px;
             cursor: pointer;
             flex-shrink: 0
