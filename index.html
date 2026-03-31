@@ -502,7 +502,7 @@
                     <div class="sec-label">친구 카드</div>
                     <div class="deck-list">
                         <div class="deck-row" onclick="startGame('icebreaker')">
-                            <div class="deck-row-name" style="white-space:nowrap">아이스브레이커</div>
+                            <div class="deck-row-name">워밍업</div>
                             <div class="deck-row-sub">어색함을 깨는 질문 · 30장</div>
                             <div class="deck-row-arr">›</div>
                         </div>
@@ -901,7 +901,7 @@
                 ]
             };
 
-            const NAMES = { 탐구: '탐구', 사랑: '사랑', 미래: '미래', adult: '커플 심화 카드', icebreaker: '아이스브레이커', balance: '밸런스 게임', tmi: 'TMI' };
+            const NAMES = { 탐구: '탐구', 사랑: '사랑', 미래: '미래', adult: '커플 심화 카드', icebreaker: '워밍업', balance: '밸런스 게임', tmi: 'TMI' };
             const MSGS = {
                 탐구: '서로에 대해 조금 더 깊이 이해하게 됐나요?\n대화를 나눈 만큼 마음이 가까워졌을 거예요.',
                 사랑: '오늘 나눈 이야기들이\n사랑을 더욱 깊게 만들었을 거예요.',
@@ -932,7 +932,7 @@
 
             function load() {
                 const total = deck.length, c = deck[idx], isA = key === 'adult';
-                const typeMap = { 탐구: '탐구', 사랑: '사랑', 미래: '미래', icebreaker: '아이스브레이커', balance: '밸런스', tmi: 'TMI' };
+                const typeMap = { 탐구: '탐구', 사랑: '사랑', 미래: '미래', icebreaker: '워밍업', balance: '밸런스', tmi: 'TMI' };
                 document.getElementById('cQ').textContent = isA ? c.q : c;
                 document.getElementById('cType').textContent = isA ? c.t : typeMap[key];
                 document.getElementById('cNum').textContent = (idx + 1) + ' / ' + total;
